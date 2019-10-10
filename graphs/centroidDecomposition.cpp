@@ -1,5 +1,4 @@
 #include <bits/stdc++.h>
-
 using namespace std;
 
 const int N = 2e5 + 7;
@@ -88,25 +87,4 @@ void Rozbicie(int u){
 	for(auto v: G[u])
 		if(!block[v.first])
 			Rozbicie(v.first);
-}
-
-int main(){
-	scanf("%d %d", &n, &k);
-	for(int i = 1; i < n; ++i){
-		int u, v, c;
-		scanf("%d %d %d", &u, &v, &c);
-
-		G[u].push_back({v, c});
-		G[v].push_back({u, c});
-	}
-
-	for(int i = 1; i <= k; ++i)
-		tab[i] = N;
-	Rozbicie(1);
-
-	if(res == N)
-		puts("-1");
-	else
-		printf("%d\n", res);
-	return 0;
 }
