@@ -11,3 +11,14 @@
 #define REP(i, k, n) for (int i = k; i <= n; ++i)
 #define DEC(i, k, n) for (int i = k; i >= n; --i)
 using namespace std;
+typedef long long ll;
+typedef pair<int,int> pii;
+typedef pair<int,ll> pil;
+typedef pair<ll,int> pli;
+typedef pair<ll,ll> pll;
+typedef long double ld;
+typedef vector<int> vi;
+typedef vector<ll> vll;
+typedef vector<pii> vii
+
+int main() {}
