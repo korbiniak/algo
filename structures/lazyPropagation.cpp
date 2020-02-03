@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
-
+typedef long long ll;
+    
 // Implementacja drzewa przedzial-przedzial, operacje dodaj na przedziale - suma na przedziale
 
 const int M = (1<<18);
@@ -29,7 +30,7 @@ void update(int l, int r, int val, int node = 1, int start = 0, int end = M-1) {
     propagate(node, start, end);
     if (l > r || l > end || start > r) return;
 
-    if (start <= l && r <= end) {
+    if (l <= start && end <= r) {
         tree[node] += (end - start + 1) * val;
         if (start != end) {
             lazy[node*2] += val;
@@ -49,7 +50,7 @@ int query(int l, int r, int node = 1, int start = 0, int end = M-1) {
     propagate(node, start, end);
     if (l > r || l > end || start > r) return 0;
 
-    if (start <= l && r <= end) {
+    if (l <= start && end <= r) {
         return tree[node];
     }
 
@@ -58,4 +59,21 @@ int query(int l, int r, int node = 1, int start = 0, int end = M-1) {
     int p2 = query(l, r, node*2 + 1, mid+1, end);
 
     return p1 + p2;
+}
+
+int main() {
+  int q; cin >> q;
+  while (q--) {
+    int t;
+    cin >> t;
+    if (t == 1) {
+      int a, b, v;
+      cin >> a >> b >> v;
+      update(a, b, v);
+    } else {
+      int a, b;
+      cin >> a >> b;
+      cout << query(a, b) << "\n";
+    }
+  }
 }
