@@ -22,14 +22,14 @@ int main() {
     if (i == 0 || letter_positions[i].first != letter_positions[i-1].first) cnt++;
     KMR[0][letter_positions[i].second] = cnt;
   }
-  
+
   for (int k = 1; (1<<k) <= n; ++k) {
     cnt = 0;
     vector<pair<pair<int,int>, int>> pair_position;
-    for (int i = 0; i + (1<<k) <= n; ++i) 
+    for (int i = 0; i < n; ++i) 
       pair_position.push_back({{KMR[k-1][i], KMR[k-1][i + (1<<(k-1))]}, i});
     sort(pair_position.begin(), pair_position.end());
-    for (int i = 0; i + (1<<(k)) <= n; ++i) {
+    for (int i = 0; i < n; ++i) {
       if (i == 0 || pair_position[i].first != pair_position[i-1].first)
         cnt++;
       KMR[k][pair_position[i].second] = cnt;
